@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name" translatable="false">Implicit Intent</string>
+
+    <string name="edittext_uri">http://developers.google.com/</string>
+    <string name="button_uri">Open Website</string>
+
+    <string name="edittext_loc">GTBC Chennai</string>
+    <string name="button_loc">Open Location</string>
+
+    <string name="edittext_share">FordLabs</string>
+    <string name="button_share">Share This Text</string>
+</resources>
