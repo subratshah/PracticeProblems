@@ -15,32 +15,32 @@ public class EchoTest {
     }
 
     @Test
-    public void messageStarfish_ping_returnsEchoStarfish() {
+    public void ping_messageSingleWord_returnsEchoWord() {
         assertEquals("Echo: Starfish", subject.ping("Starfish"));
     }
 
     @Test
-    public void messageNull_ping_returnsReplacementMessage() {
+    public void ping_messageNull_reutrnsNothingToEcho() {
         assertEquals("There is nothing to echo", subject.ping(""));
     }
 
     @Test
-    public void messageUppercase_ping_returnsWarning() {
+    public void ping_messageSingleCaps_returnsWarningCaps() {
         assertEquals("WARNING: SHARK", subject.ping("SHARK"));
     }
 
     @Test
-    public void messageTwoStrings_ping_returnsEchoString1String2() {
+    public void ping_messageTwoWords_returnsEchoAndBetweenWords() {
         assertEquals("Echo: Beluga and Whale", subject.ping("Beluga", "Whale"));
     }
 
     @Test
-    public void messageManyStrings_ping_returnsEcho() {
+    public void ping_messageMultipleWordsIncludingNull_returnsEchoCommasWordsAndLastWordRemoveNull() {
         assertEquals("Echo: Walrus, Whale and Seal", subject.ping("Walrus", "Whale", "", "Seal"));
     }
 
     @Test
-    public void messageManyStrings_ping_returnsWarning() {
+    public void ping_messageMultipleWordsAndCaps_returnsEchoCommaAndWordsWithWarningCommaAndCaps() {
         assertEquals("Echo: Walrus, Whale and Seal WARNING: SHARK, SEASNAKE AND SHARK",
                 subject.ping("Walrus", "SHARK", "Whale", "Seal", "SEASNAKE", "SHARK"));
     }
