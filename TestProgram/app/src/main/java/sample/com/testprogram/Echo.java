@@ -1,31 +1,45 @@
 package sample.com.testprogram;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Echo {
     public String ping(String... messages) {
-        String echo = "";
-        String warning = "";
-        String separator = " ";
-        if (messages.length > 2) separator = ", ";
+        String echosSentence = "";
+        String warningSentence = "";
 
-        for (int i = 0; i < messages.length; i++) {
+        if (messages[0].isEmpty()) {
+            return "There is nothing to echo";
+        } else {
+            List<String> echoList = new ArrayList<>();
+            List<String> warningList = new ArrayList<>();
 
-            if (messages[i] == null || messages[i].isEmpty()) {
-                return "There is nothing to echo";
-            } else if (messages[i].equals(messages[i].toUpperCase())) {
-                if (messages.length > 2 && (i == messages.length - 1)) {
-                    warning = warning.substring(0, warning.length() - 2) + " AND " + messages[i];
-                } else warning += messages[i] + separator;
-            } else {
-                if (messages.length > 2 && (i == messages.length - 1)) {
-                    echo = echo.substring(0, echo.length() - 2) + " and " + messages[i];
-                } else echo += messages[i] + separator;
+            for (String message : messages) {
+                if (message.equals(message.toUpperCase()) && message.length() != 0) {
+                    warningList.add(message);
+                } else if (!message.isEmpty()) {
+                    echoList.add(message);
+                }
+            }
+
+            while (!echoList.isEmpty()) {
+                if (echosSentence.isEmpty()) {
+                    echosSentence = "Echo: " + echoList.get(0);
+                } else if (echoList.size() == 1) {
+                    echosSentence = echosSentence + " and " + echoList.get(0);
+                } else echosSentence += ", " + echoList.get(0);
+                echoList.remove(0);
+            }
+
+            while (!warningList.isEmpty()) {
+                if (warningSentence.isEmpty()) {
+                    warningSentence = " WARNING: " + warningList.get(0);
+                } else if (warningList.size() == 1) {
+                    warningSentence = warningSentence + " AND " + warningList.get(0);
+                } else warningSentence += ", " + warningList.get(0);
+                warningList.remove(0);
             }
         }
-        if (!echo.isEmpty())
-            echo = "Echo: " + echo.trim();
-        if (!warning.isEmpty())
-            warning = "WARNING: " + warning.trim();
-
-        return echo + warning;
+        return (echosSentence + warningSentence).trim();
     }
 }

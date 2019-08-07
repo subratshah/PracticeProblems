@@ -31,16 +31,17 @@ public class EchoTest {
 
     @Test
     public void messageTwoStrings_ping_returnsEchoString1String2() {
-        assertEquals("Echo: Beluga Whale", subject.ping("Beluga", "Whale"));
+        assertEquals("Echo: Beluga and Whale", subject.ping("Beluga", "Whale"));
     }
 
     @Test
     public void messageManyStrings_ping_returnsEcho() {
-        assertEquals("Echo: Walrus, Whale and Seal", subject.ping("Walrus", "Whale", "Seal"));
+        assertEquals("Echo: Walrus, Whale and Seal", subject.ping("Walrus", "Whale", "", "Seal"));
     }
 
     @Test
     public void messageManyStrings_ping_returnsWarning() {
-        assertEquals("WARNING: WALRUS, WHALE AND SEAL", subject.ping("WALRUS", "WHALE", "SEAL"));
+        assertEquals("Echo: Walrus, Whale and Seal WARNING: SHARK, SEASNAKE AND SHARK",
+                subject.ping("Walrus", "SHARK", "Whale", "Seal", "SEASNAKE", "SHARK"));
     }
 }
