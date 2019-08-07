@@ -16,7 +16,7 @@ public class EchoTest {
 
     @Test
     public void messageStarfish_ping_returnsEchoStarfish() {
-        assertEquals("Echo:Starfish", subject.ping("Starfish"));
+        assertEquals("Echo: Starfish", subject.ping("Starfish"));
     }
 
     @Test
@@ -26,6 +26,16 @@ public class EchoTest {
 
     @Test
     public void messageUppercase_ping_returnsWarning() {
-        assertEquals("WARNING:SHARK", subject.ping("SHARK"));
+        assertEquals("WARNING: SHARK", subject.ping("SHARK"));
+    }
+
+    @Test
+    public void messageTwoStrings_ping_returnsEchoString1String2() {
+        assertEquals("Echo: Beluga Whale", subject.ping("Beluga", "Whale"));
+    }
+
+    @Test
+    public void messageManyStrings_ping_returnsEcho() {
+        assertEquals("Echo: Walrus, Whale and Seal", subject.ping("Walrus", "Whale", "Seal"));
     }
 }
