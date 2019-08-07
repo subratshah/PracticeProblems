@@ -4,18 +4,28 @@ public class Echo {
     public String ping(String... messages) {
         String echo = "";
         String warning = "";
+        String separator = " ";
+        if (messages.length > 2) separator = ", ";
 
-        for (String message : messages) {
-            if (message == null || message.isEmpty()) {
+        for (int i = 0; i < messages.length; i++) {
+
+            if (messages[i] == null || messages[i].isEmpty()) {
                 return "There is nothing to echo";
-            } else if (message.equals(message.toUpperCase())) {
-                warning += " " + message;
+            } else if (messages[i].equals(messages[i].toUpperCase())) {
+                if (messages.length > 2 && (i == messages.length - 1)) {
+                    warning = warning.substring(0, warning.length() - 2) + " AND " + messages[i];
+                } else warning += messages[i] + separator;
             } else {
-                echo += " " + message;
+                if (messages.length > 2 && (i == messages.length - 1)) {
+                    echo = echo.substring(0, echo.length() - 2) + " and " + messages[i];
+                } else echo += messages[i] + separator;
             }
         }
-        if (!echo.isEmpty()) echo = "Echo:" + echo;
-        if (!warning.isEmpty()) warning = "WARNING:" + warning;
+        if (!echo.isEmpty())
+            echo = "Echo: " + echo.trim();
+        if (!warning.isEmpty())
+            warning = "WARNING: " + warning.trim();
+
         return echo + warning;
     }
 }

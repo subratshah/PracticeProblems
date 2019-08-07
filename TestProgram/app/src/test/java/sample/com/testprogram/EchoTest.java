@@ -38,4 +38,9 @@ public class EchoTest {
     public void messageManyStrings_ping_returnsEcho() {
         assertEquals("Echo: Walrus, Whale and Seal", subject.ping("Walrus", "Whale", "Seal"));
     }
+
+    @Test
+    public void messageManyStrings_ping_returnsWarning() {
+        assertEquals("WARNING: WALRUS, WHALE AND SEAL", subject.ping("WALRUS", "WHALE", "SEAL"));
+    }
 }
