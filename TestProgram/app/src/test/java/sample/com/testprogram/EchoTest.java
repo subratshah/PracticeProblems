@@ -20,4 +20,9 @@ public class EchoTest {
     public void messageStarfish_ping_returnsEchoStarfish() {
         assertEquals("Echo:" + message, subject.ping(message));
     }
+
+    @Test
+    public void messageNull_ping_returnsReplacementMessage() {
+        assertEquals("There is nothing to echo", subject.ping(null));
+    }
 }
