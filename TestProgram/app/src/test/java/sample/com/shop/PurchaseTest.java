@@ -64,4 +64,11 @@ public class PurchaseTest {
         purchase = new Purchase(customer, discount, 0, 700);
         assertEquals(595, purchase.getBill(), 0);
     }
+
+    @Test
+    public void getBill_ifCustomerIsDifferentMemberAndServiceCostIs500AndProductCostIs500_totalAmountIs1000() {
+        customer = new Customer("CUST6", "nonmember");
+        purchase = new Purchase(customer, discount, 500, 500);
+        assertEquals(1000, purchase.getBill(), 0);
+    }
 }
