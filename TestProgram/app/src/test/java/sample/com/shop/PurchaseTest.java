@@ -36,4 +36,11 @@ public class PurchaseTest {
     public void getProductDiscount_memberTypeDiamond_returns015() {
         assertEquals(0.15, discount.getProductDiscount(customer.getMemberType()), 0);
     }
+
+    @Test
+    public void getBill_ifCustomerIsPlatinumMemberAndServiceCostIs1000AndProductCostIs500_totalAmountIs1295() {
+        customer = new Customer("CUST2", "platinum");
+        purchase = new Purchase(customer, discount, 1000, 500);
+        assertEquals(1295, purchase.getBill(), 0);
+    }
 }
