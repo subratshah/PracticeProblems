@@ -1,8 +1,5 @@
 package sample.com.shop;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Discount {
     private static final double DIAMOND_SERVICE_DISCOUNT = 0.17;
     private static final double PLATINUM_SERVICE_DISCOUNT = 0.13;
@@ -23,8 +20,7 @@ public class Discount {
     }
 
     public double getProductDiscount(String membershipType) {
-        List<String> membership = Arrays.asList("Diamond", "Platinum", "Gold");
-        if (membership.contains(membershipType))
+        if (getServiceDiscount(membershipType) > 0)
             return PRODUCT_DISCOUNT;
         return 0;
     }

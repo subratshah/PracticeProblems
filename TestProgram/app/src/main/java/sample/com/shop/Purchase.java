@@ -13,7 +13,10 @@ public class Purchase {
         this.productCost = productCost;
     }
 
-    public double getBill(double serviceCost, double productCost) {
-        return 0;
+    public double getBill() {
+        double service = serviceCost * (1 - discount.getServiceDiscount(customer.getMemberType()));
+        double product = productCost * (1 - discount.getProductDiscount(customer.getMemberType()));
+
+        return service + product;
     }
 }
